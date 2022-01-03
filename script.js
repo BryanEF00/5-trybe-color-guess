@@ -53,3 +53,19 @@ function randomColor() {
 
 const colorRGB = document.getElementById('rgb-color');
 colorRGB.innerText = randomColor();
+
+const resetBtn = document.getElementById('reset-game');
+
+function deleteGame() {
+  for (let i = 1; i < 8; i += 1) {
+    document.getElementById('color-options').children[1].remove();
+  }
+}
+
+function newGame() {
+  colorOptions();
+  colorRGB.innerText = randomColor();
+}
+
+resetBtn.addEventListener('click', deleteGame);
+resetBtn.addEventListener('click', newGame);
