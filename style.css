@@ -1,0 +1,16 @@
+#title {
+  text-align: center;
+}
+#color-options {
+  width: fit-content;
+  text-align: center;
+  margin: auto;
+}
+.ball {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  border: 1px solid black;
+  border-radius: 100%;
+  margin-right: 10px;
+}
