@@ -1,6 +1,3 @@
-const corRGB = document.getElementById('rgb-color');
-corRGB.innerText = generateColor();
-
 const colorsToGuess = document.getElementById('color-options');
 
 function generateColor() {
@@ -13,6 +10,18 @@ function generateColor() {
   return `(${r},${g},${b})`;
 }
 
+function pickColor(e) {
+  let pickedColor = e.target;
+  let pickedColorBG = pickedColor.style.backgroundColor;
+  let pickedColorCode = pickedColorBG.replace('rgb', '');
+
+  if (pickedColorCode === colorRGB.innerText) {
+    document.getElementById('answer').innerText = 'Acertou!';
+  } else {
+    document.getElementById('answer').innerText = 'Errou! Tente novamente!';
+  }
+}
+
 function colorOptions() {
   for (let i = 0; i < 6; i += 1) {
     let color = document.createElement('div');
@@ -20,7 +29,27 @@ function colorOptions() {
     color.style.backgroundColor = `rgb${generateColor()}`;
 
     colorsToGuess.appendChild(color);
+
+    color.addEventListener('click', pickColor);
   }
+  let initialText = document.createElement('p');
+  initialText.innerText = 'Escolha uma cor';
+  initialText.id = 'answer';
+
+  colorsToGuess.appendChild(initialText);
 }
 
 colorOptions();
+
+function randomColor() {
+  let rng = parseInt(Math.random() * 6 + 1);
+  let colorSelected =
+    document.querySelector('#color-options').children[rng].style
+      .backgroundColor;
+  let colorSelectedCode = colorSelected.replace('rgb', '');
+
+  return colorSelectedCode;
+}
+
+const colorRGB = document.getElementById('rgb-color');
+colorRGB.innerText = randomColor();
