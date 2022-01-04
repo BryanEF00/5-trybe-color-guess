@@ -9,13 +9,26 @@
   </head>
   <body>
     <header>
-      <h1 id="title">Adivinhe a cor!</h1>
+      <h1 id="title" class="textCenter">Adivinhe a cor!</h1>
     </header>
-    <main id="color-options">
-      <p id="rgb-color"></p>
-      <p id="score"></p>
+    <main class="colors">
+      <section class="textCenter">
+        <p id="rgb-color"></p>
+        <p id="score"></p>
+      </section>
+      <section id="color-options">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </section>
+      <section class="textCenter">
+        <p id="answer">Escolha uma cor</p>
+        <button id="reset-game">Resetar o jogo/cores</button>
+      </section>
     </main>
-    <button id="reset-game">Iniciar/Reiniciar o jogo</button>
     <script src="script.js"></script>
   </body>
 </html>
