@@ -3,9 +3,9 @@ const colorsToGuess = document.getElementById('color-options');
 function generateColor() {
   /* Referência: https://wallacemaxters.com.br/blog/2021/02/20/como-gerar-cores-aleatorias-no-javascript */
 
-  let r = parseInt(Math.random() * 255);
-  let g = parseInt(Math.random() * 255);
-  let b = parseInt(Math.random() * 255);
+  let r = parseInt(Math.random() * 255, 10);
+  let g = parseInt(Math.random() * 255, 10);
+  let b = parseInt(Math.random() * 255, 10);
 
   return `(${r},${g},${b})`;
 }
@@ -17,6 +17,8 @@ function pickColor(e) {
 
   if (pickedColorCode === colorRGB.innerText) {
     document.getElementById('answer').innerText = 'Acertou!';
+    scoreValue += 3;
+    scoreNumber.innerText = 'Placar: ' + scoreValue;
   } else {
     document.getElementById('answer').innerText = 'Errou! Tente novamente!';
   }
@@ -54,11 +56,15 @@ function randomColor() {
 const colorRGB = document.getElementById('rgb-color');
 colorRGB.innerText = randomColor();
 
+const scoreNumber = document.getElementById('score');
+let scoreValue = 0;
+scoreNumber.innerText = 'Placar: ' + scoreValue;
+
 const resetBtn = document.getElementById('reset-game');
 
 function deleteGame() {
-  for (let i = 1; i < 8; i += 1) {
-    document.getElementById('color-options').children[1].remove();
+  for (let i = 0; i < 7; i += 1) {
+    document.getElementById('color-options').children[2].remove();
   }
 }
 
